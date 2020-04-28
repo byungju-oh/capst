@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+  <head>
+    <title>homet</title>
+  </head>
+
+  <body>
+    <center><h1>다운</h1></center>
+    <center><a href="/">홈페이지</a><br><center>
+    <hr width="100%" color="black"/>
+    <center><h3>사진다운</h3></center>
+    <hr width="100%" color="black"/>
+
+    <img src="{{ url_for('static',filename='images/download.png') }}", width="70"
+        style="margin-left: auto; margin-right: auto; display: block;")/><br><br>
+
+    <center>
+    <form action = "http://localhost:8080/fileDown" method = "POST"
+         enctype = "multipart/form-data">
+    <input type = "text" name = "file" />
+    <input type = "submit"/>
+    </form></center><br><br><br>
+
+    <hr width="100%" color="black"/>
+    <center><h3>File List</h3></center>
+    <hr width="100%" color="black"/>
+
+    <img src="{{ url_for('static',filename='images/list.png') }}", width="50"
+    style="margin-left: auto; margin-right: auto; display: block;")/><br>
+
+    <ul>
+         {% for n in files %}
+         <li>{{n}}</li>
+         {% endfor %}
+    </ul>
+  </body>
+</html>
