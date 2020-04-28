@@ -18,6 +18,13 @@ def page_not_found(error):
 @app.route('/')
 def home_page():
 	return render_template('home.html')
+#파일 리스트
+@app.route('/list')
+def file():
+    file_list = os.listdir("./uploads")
+    html= """<center><a href="/">홈페이지</a><br><br>"""
+    html+="file_list:"{}".format(file_list)+"</center>"
+    return html
 
 #업로드 HTML 렌더링
 @app.route('/upload')
