@@ -19,6 +19,7 @@ def page_not_found(error):
 def home_page():
 	return render_template('home.html')
 #파일 리스트
+# uploads 폴더에 파일 저장한다
 @app.route('/list')
 def file():
     file_list = os.listdir("./uploads")
