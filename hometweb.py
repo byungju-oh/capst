@@ -1,3 +1,7 @@
+# html entype속성을 multipart/form-data로 지정해야 파이썬 리퀘스트를 이요한 전달을 사용가능하다
+
+
+
 from flask import Flask, render_template,  send_file
 #파일 업로드
 from flask import request
@@ -36,8 +40,10 @@ def upload_page():
 @app.route('/fileUpload', methods = ['GET', 'POST'])
 def upload_file():
 	if request.method == 'POST':
+        # 업로드페이지에서 post 형식으로 넘어오면 requests객체에 file이름으로 전송된
+        #파일을 가져온다
 		f = request.files['file']
-		#저장할 경로 + 파일명
+		#저장할 경로 + 파일명  secure는 파일 이름 보호하는 효과
 		f.save('./uploads/' + secure_filename(f.filename))
 		files = os.listdir("./uploads")
 		return render_template('check.html')
