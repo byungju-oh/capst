@@ -13,10 +13,10 @@ app = Flask(__name__)
 #최대 용량 16mb
 #app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
-@app.errorhandler(404)
+"""@app.errorhandler(404)
 def page_not_found(error):
 	app.logger.error(error)
-	return render_template('page_not_found.html'), 404
+	return render_template('page_not_found.html'), 404"""
 
 #HTML 렌더링
 @app.route('/')
@@ -71,4 +71,5 @@ def down_file():
 
 if __name__ == '__main__':
 	#서버 실행
-	app.run(host='0.0.0.0', debug = True)
+	#app.run(host='0.0.0.0', debug = True)
+	app.run()
