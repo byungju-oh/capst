@@ -6,7 +6,7 @@ from flask import Flask, render_template,  send_file
 #파일 업로드
 from flask import request
 #파일이름 보호
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import os
 app = Flask(__name__)
 #파일 업로드 용량 제한 단위:바이트
@@ -28,7 +28,7 @@ def home_page():
 def file():
     file_list = os.listdir("./uploads")
     html= """<center><a href="/">홈페이지</a><br><br>"""
-    html+="file_list:"{}".format(file_list)+"</center>"
+    html+="file_list:{}".format(file_list)+"</center>"
     return html
 
 #업로드 HTML 렌더링
@@ -71,5 +71,5 @@ def down_file():
 
 if __name__ == '__main__':
 	#서버 실행
-	#app.run(host='0.0.0.0', debug = True)
-	app.run()
+	app.run('localhost',port=8080, debug = True)
+	#app.run()
