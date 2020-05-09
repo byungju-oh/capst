@@ -25,7 +25,8 @@ def get_body():
     model = models.resnet50(pretrained=True)
     for param in model.parameters():
         param.requires_grad = False
-    model.fc = nn.Linear(2048, 6, bias=True)
+    model.fc = nn.Linear(2048, 500, bias=True)
+    model.fc1=nn.Linear(500,6,bias=True)
     fc_parameters = model.fc.parameters()
     for param in fc_parameters:
         param.requires_grad = True

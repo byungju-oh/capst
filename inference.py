@@ -27,6 +27,7 @@ model = get_body()
 def get_type(image_bytes):
     tensor = get_tensor(image_bytes)
     outputs = model.forward(tensor)
+    print(outputs.max())
     _,prediction= outputs.max(1)
     category = prediction.item() 
     # class_idx = idx_to_class[category]
